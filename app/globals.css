@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #090d16;
+  --foreground: #e2e8f0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom selection color */
+::selection {
+  background-color: rgba(34, 211, 238, 0.3);
+  color: #ffffff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #22d3ee, #818cf8);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #67e8f9, #a78bfa);
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-md border border-white/[0.08];
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300 hover:border-accent-cyan/40 hover:bg-white/[0.05] hover:shadow-glow;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-cyan via-accent-indigo to-accent-violet;
+  }
+
+  .section-padding {
+    @apply px-5 sm:px-8 lg:px-16 py-24 md:py-28;
+  }
+
+  .container-width {
+    @apply max-w-6xl mx-auto;
+  }
+
+  /* Animated gradient text underline for section sleeves */
+  .gradient-underline {
+    background: linear-gradient(90deg, #22d3ee, #818cf8, #a78bfa);
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium border border-white/10 bg-white/5 text-slate-300 transition-colors duration-300;
+  }
+
+  .nav-link {
+    @apply text-sm text-slate-400 hover:text-accent-cyan transition-colors duration-200 relative;
+  }
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Subtle animated background orbs */
+@layer utilities {
+  .animate-gradient-underline {
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+  }
+}
